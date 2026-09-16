@@ -2,33 +2,320 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Management System</title>
+
+    <meta
+        name="description"
+        content="Student Management System - CRUD Web Application"
+    >
+
+    <title>Student Management System</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header>
-        <h1>Employee Management System</h1>
-        <p>Simple CRUD Web Application</p>
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+        <div class="container header-content">
+
+            <div>
+                <h1>Student Management System</h1>
+                <p>Complete CRUD Web Application</p>
+            </div>
+
+        </div>
     </header>
 
-    <div class="container">
 
-        <!-- Employee Form -->
-        <section class="form-section">
-            <h2 id="formTitle">Add Employee</h2>
+    <!-- ================= MAIN CONTENT ================= -->
 
-            <form id="employeeForm">
+    <main class="container main-content">
 
-                <input type="hidden" id="employeeId">
 
-                <label>Employee Name</label>
-                <input type="text" id="name" placeholder="Enter employee name" required>
+        <!-- ================= STUDENT FORM ================= -->
 
-                <label>Email</label>
-                <input type="email" id="email" placeholder="Enter email" required>
+        <section class="card">
 
-                <label>Phone</label>
-                <input type="tel" id="phone" placeholder="Enter phone number" required>
+            <div class="card-header">
+                <div>
+                    <h2 id="formTitle">Add Student</h2>
+                    <p class="subtitle">
+                        Enter student information below
+                    </p>
+                </div>
+            </div>
+
+
+            <form id="studentForm">
+
+                <!-- Hidden ID used during update -->
+
+                <input
+                    type="hidden"
+                    id="studentId"
+                >
+
+
+                <div class="form-grid">
+
+
+                    <!-- NAME -->
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Student Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter student name"
+                            minlength="2"
+                            maxlength="100"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter email address"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- DEPARTMENT -->
+
+                    <div class="form-group">
+
+                        <label for="department">
+                            Department
+                        </label>
+
+                        <input
+                            type="text"
+                            id="department"
+                            name="department"
+                            placeholder="Example: Computer Science"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- YEAR -->
+
+                    <div class="form-group">
+
+                        <label for="year">
+                            Year
+                        </label>
+
+                        <select
+                            id="year"
+                            name="year"
+                            required
+                        >
+
+                            <option value="">
+                                Select Year
+                            </option>
+
+                            <option value="1">
+                                1st Year
+                            </option>
+
+                            <option value="2">
+                                2nd Year
+                            </option>
+
+                            <option value="3">
+                                3rd Year
+                            </option>
+
+                            <option value="4">
+                                4th Year
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FORM BUTTONS -->
+
+                <div class="form-buttons">
+
+                    <button
+                        type="submit"
+                        id="saveButton"
+                        class="btn btn-primary"
+                    >
+                        Save Student
+                    </button>
+
+                    <button
+                        type="button"
+                        id="cancelButton"
+                        class="btn btn-secondary hidden"
+                    >
+                        Cancel Edit
+                    </button>
+
+                </div>
+
+            </form>
+
+
+            <!-- MESSAGE -->
+
+            <div
+                id="message"
+                class="message"
+                role="alert"
+            ></div>
+
+        </section>
+
+
+
+        <!-- ================= STUDENT LIST ================= -->
+
+        <section class="card">
+
+            <div class="list-header">
+
+                <div>
+                    <h2>Student List</h2>
+
+                    <p class="subtitle">
+                        Manage all registered students
+                    </p>
+                </div>
+
+
+                <!-- SEARCH -->
+
+                <div class="search-box">
+
+                    <input
+                        type="search"
+                        id="searchInput"
+                        placeholder="Search students..."
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- TABLE -->
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>Name</th>
+
+                            <th>Email</th>
+
+                            <th>Department</th>
+
+                            <th>Year</th>
+
+                            <th>Actions</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="studentTable">
+
+                        <!-- JavaScript inserts students here -->
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- EMPTY STATE -->
+
+            <div
+                id="emptyState"
+                class="empty-state"
+            >
+
+                <div class="empty-icon">
+                    📚
+                </div>
+
+                <h3>No Students Found</h3>
+
+                <p>
+                    Add a student to see the record here.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <p>
+                Student Management System
+                © 2026
+            </p>
+
+            <p>
+                HTML • CSS • JavaScript • Spring Boot • JPA • H2
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>
